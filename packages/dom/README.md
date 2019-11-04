@@ -1,5 +1,7 @@
 # react-bounding-box-dom
 
+[![Build Status](https://travis-ci.org/janjakubnanista/react-width-height.svg?branch=master)](https://travis-ci.org/janjakubnanista/react-width-height)
+
 Zero-dependency `React` bounding box providers and hooks for DOM elements.
 
 ## Why `react-bounding-box-dom`?
