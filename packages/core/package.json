@@ -1,0 +1,55 @@
+{
+  "name": "@react-width-height/core",
+  "version": "0.0.1",
+  "description": "Core functionality for react-width-height",
+  "keywords": [
+    "React",
+    "Dimensions",
+    "Width",
+    "Height",
+    "Size"
+  ],
+  "author": "Jan Jakub Nanista <jan.jakub.nanista@gmail.com>",
+  "homepage": "https://github.com/janjakubnanista/react-width-height#readme",
+  "license": "ISC",
+  "main": "dist/index.cjs.js",
+  "browser": "dist/index.umd.js",
+  "module": "dist/index.es.js",
+  "files": [
+    "dist"
+  ],
+  "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/janjakubnanista/react-width-height.git"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "clean": "rm -rf dist",
+    "test": "jest",
+    "test:watch": "yarn test --watchAll",
+    "prepare": "yarn build"
+  },
+  "bugs": {
+    "url": "https://github.com/janjakubnanista/react-width-height/issues"
+  },
+  "peerDependencies": {
+    "react": "^16.10.1"
+  },
+  "devDependencies": {
+    "@types/react": "16.9.11",
+    "@types/react-dom": "16.9.3",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "jest": "^24.9.0",
+    "jest-enzyme": "^7.1.2",
+    "react": "16.10.1",
+    "react-dom": "16.10.1",
+    "rollup": "^1.25.0",
+    "ts-jest": "^24.1.0",
+    "ts-loader": "^6.2.0",
+    "ts-node": "^8.4.1",
+    "tslib": "^1.10.0",
+    "typescript": "^3.6.4"
+  }
+}
