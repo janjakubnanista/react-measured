@@ -1,5 +1,5 @@
 import 'jest';
-import { createChecker } from '../checker';
+import { createChecker } from '../createChecker';
 import { BoundingBox, identity } from '@react-width-height/core';
 import { createRef, MutableRefObject } from 'react';
 import { CheckerTransform, CheckerImplementation } from '@react-width-height/core';
