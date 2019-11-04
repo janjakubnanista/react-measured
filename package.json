@@ -8,7 +8,7 @@
     "build": "lerna run build",
     "clean": "lerna run clean",
     "test": "lerna run test",
-    "prepublishOnly": "lerna run build"
+    "prepublishOnly": "NODE_ENV=production lerna run build"
   },
   "repository": {
     "type": "git",
