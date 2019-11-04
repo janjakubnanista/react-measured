@@ -41,8 +41,7 @@
     "storybook:build": "build-storybook",
     "storybook:start": "start-storybook -p 6006",
     "storybook:publish": "storybook-to-ghpages",
-    "gh-pages": "npm run gh-pages:clean && npm run gh-pages:build && npm run gh-pages:publish",
-    "prepublishOnly": "yarn lint && yarn test && yarn clean && yarn build"
+    "gh-pages": "npm run gh-pages:clean && npm run gh-pages:build && npm run gh-pages:publish"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
@@ -85,6 +84,7 @@
     "rollup": "^1.26.2",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^5.1.2",
     "rollup-plugin-typescript2": "^0.24.3",
     "storybook": "^5.1.11",
     "styled-components": "^4.4.0",
