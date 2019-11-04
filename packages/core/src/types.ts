@@ -1,18 +1,13 @@
-import React, { PropsWithChildren, ReactNode } from 'react';
+import React from 'react';
 
-export interface Position {
+export interface BoundingBox {
   readonly top: number;
   readonly right: number;
   readonly bottom: number;
   readonly left: number;
-}
-
-export interface Size {
   readonly width: number;
   readonly height: number;
 }
-
-export type BoundingBox = Position & Size;
 
 export type BoundingBoxProviderChildrenFunction = (props: BoundingBox) => React.ReactNode;
 
@@ -24,9 +19,9 @@ export interface BoundingBoxProviderOwnProps {
   sizeOnly?: boolean;
 }
 
-export type BoundingBoxProviderWrappedComponentProps = PropsWithChildren<{}>;
+export type BoundingBoxProviderWrappedComponentProps = React.PropsWithChildren<{}>;
 
-export type BoundingBoxProviderProps<P extends PropsWithChildren<{}>> = BoundingBoxProviderOwnProps &
+export type BoundingBoxProviderProps<P extends React.PropsWithChildren<{}>> = BoundingBoxProviderOwnProps &
   Omit<P, keyof BoundingBoxProviderOwnProps>;
 
 // Checker types
