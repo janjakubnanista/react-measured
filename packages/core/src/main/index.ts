@@ -1,2 +1,2 @@
-export { createBoundingBoxProvider } from './createBoundingBoxProvider';
-export { createUseBoundingBox } from './createUseBoundingBox';
+export * from './createBoundingBoxProvider';
+export * from './createUseBoundingBox';
