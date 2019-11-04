@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Demo app for @react-width-height/native",
+    "name": "Demo app for react-bounding-box/native",
     "slug": "demo",
     "privacy": "public",
     "sdkVersion": "35.0.0",

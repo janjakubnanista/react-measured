@@ -7,8 +7,8 @@ import {
   CheckerUnregisterCallback,
   CheckerImplementation,
   CheckerTransformInput,
-} from '@react-width-height/core';
-import { areBoundingBoxesEqual } from '@react-width-height/core';
+} from 'react-bounding-box';
+import { areBoundingBoxesEqual } from 'react-bounding-box';
 
 // An internal type used for passing callbacks to be executed between animation frames
 type CheckerUpdateCallback = () => void;

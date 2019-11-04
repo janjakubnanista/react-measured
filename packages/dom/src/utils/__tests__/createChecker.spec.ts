@@ -1,8 +1,8 @@
 import 'jest';
 import { createChecker } from '../createChecker';
-import { BoundingBox, identity } from '@react-width-height/core';
+import { BoundingBox, identity } from 'react-bounding-box';
 import { createRef, MutableRefObject } from 'react';
-import { CheckerTransform, CheckerImplementation } from '@react-width-height/core';
+import { CheckerTransform, CheckerImplementation } from 'react-bounding-box';
 
 const mockRequestAnimationFrame = jest.spyOn(window, 'requestAnimationFrame');
 const mockCancelAnimationFrame = jest.spyOn(window, 'cancelAnimationFrame');

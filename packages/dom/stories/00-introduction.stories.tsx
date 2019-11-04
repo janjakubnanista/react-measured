@@ -10,7 +10,7 @@ import { Bubble } from './components/visual';
 import { FixedPosition } from './components/position';
 import { Motion, spring } from 'react-motion';
 import { BoundingBoxOrigin } from '../src/components/BoundingBoxProvider';
-import { BoundingBox } from '@react-width-height/core';
+import { BoundingBox } from 'react-bounding-box';
 import { left, right } from './utils/points';
 
 const RENDER_EXAMPLE = `<BoundingBoxProvider>

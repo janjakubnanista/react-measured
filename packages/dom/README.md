@@ -1,8 +1,8 @@
-# @react-width-height/dom
+# react-bounding-box-dom
 
 Zero-dependency `React` bounding box providers and hooks for DOM elements.
 
-## Why `@react-width-height/dom`?
+## Why `react-bounding-box-dom`?
 
 Sometimes you need access to size and/or position of a component DOM element, typically:
 
@@ -14,11 +14,11 @@ Sometimes you need access to size and/or position of a component DOM element, ty
 
 In these cases you usually end up using some sort of stateful component logic based on the `resize` event of the `window` object. The problem with this solution is that your layout might change even though window dimensions haven't.
 
-That is where `@react-width-height/dom` comes in:
+That is where `react-bounding-box-dom` comes in:
 
 ```JSX
 import React from 'react';
-import { BoundingBoxProvider } from '@react-width-height/dom';
+import { BoundingBoxProvider } from 'react-bounding-box-dom';
 
 const MyComponent: React.FC = () => (
   // BoundingBoxProvider accepts all valid <div/> props
@@ -35,14 +35,14 @@ const MyComponent: React.FC = () => (
 
 ## Installation
 
-`@react-width-height/dom` is available as an NPM module (along with its TypeScript definitions):
+`react-bounding-box-dom` is available as an NPM module (along with its TypeScript definitions):
 
 ```bash
 # For npm users
-npm install --save @react-width-height/dom
+npm install --save react-bounding-box-dom
 
 # For yarn users
-yarn add @react-width-height/dom
+yarn add react-bounding-box-dom
 ```
 
 <!-- FIXME -->
@@ -52,7 +52,7 @@ yarn add @react-width-height/dom
 ### `BoundingBoxProvider`
 
 ```JSX
-import { BoundingBoxProvider } from '@react-width-height/dom';
+import { BoundingBoxProvider } from 'react-bounding-box-dom';
 ```
 
 Probably the most interesting export - a component that gives you access to its bounding box.
@@ -163,7 +163,7 @@ These functions will be executed in order, the result of each passed to the next
 `useBoundingBox`
 
 ```JSX
-import { useBoundingBox } from '@react-width-height/dom';
+import { useBoundingBox } from 'react-bounding-box-dom';
 ```
 
 <a id="api/BoundingBox"></a>

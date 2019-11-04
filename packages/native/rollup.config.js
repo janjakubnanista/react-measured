@@ -11,7 +11,7 @@ export default [
       {
         file: pkg.browser,
         format: 'umd',
-        name: '@react-width-height/native',
+        name: 'react-bounding-box/native',
         globals: { react: 'React' },
       },
     ],

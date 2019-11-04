@@ -1,5 +1,5 @@
 import React from 'react';
-import { BoundingBoxProviderOwnProps, createBoundingBoxProvider } from '@react-width-height/core';
+import { BoundingBoxProviderOwnProps, createBoundingBoxProvider } from 'react-bounding-box';
 import { HTMLProps } from 'react';
 import { transformBoundingBoxToDocument } from '../utils/transformBoundingBoxToDocument';
 import { checker } from '../checker';

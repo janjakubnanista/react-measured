@@ -1,4 +1,4 @@
-import { BoundingBox } from '@react-width-height/core';
+import { BoundingBox } from 'react-bounding-box';
 
 export const left = (box: BoundingBox | undefined, dx = 0, dy = 0): BoundingBox | undefined =>
   box
