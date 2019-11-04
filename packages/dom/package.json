@@ -1,6 +1,6 @@
 {
   "name": "@react-width-height/dom",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Width & height providers for React",
   "main": "dist/index.js",
   "files": [
@@ -27,7 +27,7 @@
     "Size"
   ],
   "dependencies": {
-    "@react-width-height/core": "^0.0.2"
+    "@react-width-height/core": "^0.0.3"
   },
   "peerDependencies": {
     "react": "^16.10.1"

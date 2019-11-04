@@ -1,6 +1,6 @@
 {
   "name": "@react-width-height/native",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "React width & height providers for React Native",
   "private": true,
   "keywords": [
