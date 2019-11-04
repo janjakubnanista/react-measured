@@ -1,0 +1,14 @@
+dist: bionic
+language: node_js
+node_js:
+  10.16.3
+cache:
+  directories:
+    node_modules
+before_install:
+  - yarn global add lerna
+install:
+  - lerna bootstrap
+script:
+  - yarn build
+  - yarn test
