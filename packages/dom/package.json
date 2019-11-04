@@ -1,5 +1,5 @@
 {
-  "name": "react-bounding-box-dom",
+  "name": "react-measured-dom",
   "version": "0.0.4",
   "description": "Width & height providers for React",
   "main": "dist/index.js",
@@ -27,7 +27,7 @@
     "Size"
   ],
   "dependencies": {
-    "react-bounding-box": "^0.0.4"
+    "react-measured": "^0.0.4"
   },
   "peerDependencies": {
     "react": "^16.10.1"

@@ -1,3 +1,3 @@
 import getRollupConfig from '../../get.rollup.config';
 
-export default [getRollupConfig('react-bounding-box')];
+export default [getRollupConfig('react-measured')];

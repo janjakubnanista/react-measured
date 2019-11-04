@@ -1,5 +1,5 @@
 {
-  "name": "react-bounding-box-native",
+  "name": "react-measured-native",
   "version": "0.0.4",
   "description": "React width & height providers for React Native",
   "private": true,

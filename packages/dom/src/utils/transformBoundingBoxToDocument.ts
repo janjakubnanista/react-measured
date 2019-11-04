@@ -1,4 +1,4 @@
-import { BoundingBox } from 'react-bounding-box';
+import { BoundingBox } from 'react-measured';
 
 export const transformBoundingBoxToDocument = (boundingBox: BoundingBox): BoundingBox => ({
   width: boundingBox.width,

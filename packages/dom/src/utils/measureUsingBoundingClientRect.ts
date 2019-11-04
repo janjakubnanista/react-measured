@@ -1,4 +1,4 @@
-import { BoundingBox } from 'react-bounding-box';
+import { BoundingBox } from 'react-measured';
 
 export const measureUsingBoundingClientRect = (element: HTMLElement): BoundingBox => {
   const boundingBox = element.getBoundingClientRect();

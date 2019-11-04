@@ -8,7 +8,7 @@ import styled from 'styled-components';
 import { useState } from '@storybook/addons';
 import { Bubble } from './components/visual';
 import { FixedPosition } from './components/position';
-import { BoundingBox } from 'react-bounding-box';
+import { BoundingBox } from 'react-measured';
 
 const stories = storiesOf('react-width-height', module);
 stories.addDecorator(withKnobs as any);

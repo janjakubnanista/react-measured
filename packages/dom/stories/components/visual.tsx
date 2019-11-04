@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { BoundingBoxProvider } from '../../src';
 import { Rotate, RelativePosition, AbsolutePosition } from './position';
-import { BoundingBox } from 'react-bounding-box';
+import { BoundingBox } from 'react-measured';
 
 export interface BubbleProps {
   color?: string;

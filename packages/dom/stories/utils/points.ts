@@ -1,4 +1,4 @@
-import { BoundingBox } from 'react-bounding-box';
+import { BoundingBox } from 'react-measured';
 
 export const left = (box: BoundingBox | undefined, dx = 0, dy = 0): BoundingBox | undefined =>
   box

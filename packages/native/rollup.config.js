@@ -11,7 +11,7 @@ export default [
       {
         file: pkg.browser,
         format: 'umd',
-        name: 'react-bounding-box/native',
+        name: 'react-measured/native',
         globals: { react: 'React' },
       },
     ],

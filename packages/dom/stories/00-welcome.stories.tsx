@@ -6,7 +6,7 @@ import { BoundingBoxProvider } from '../src/index';
 import { boxStyles, Heading1, Paragraph } from './components';
 import styled from 'styled-components';
 import { useState } from '@storybook/addons';
-import { BoundingBox } from 'react-bounding-box';
+import { BoundingBox } from 'react-measured';
 import { formatDistance } from './utils/format';
 
 const RENDER_EXAMPLE = `<BoundingBoxProvider>
@@ -30,7 +30,7 @@ const getCallback = (top: number, left: number) => `onBoundingBoxChange(({ top: 
 </BoundingBoxProvider>
 `;
 
-const stories = storiesOf('react-bounding-box-dom', module);
+const stories = storiesOf('react-measured-dom', module);
 stories.addDecorator(withKnobs);
 
 stories.add('Introduction', () => {
