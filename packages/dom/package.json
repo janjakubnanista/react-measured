@@ -1,6 +1,6 @@
 {
   "name": "react-bounding-box-dom",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Width & height providers for React",
   "main": "dist/index.js",
   "files": [
@@ -27,7 +27,7 @@
     "Size"
   ],
   "dependencies": {
-    "react-bounding-box": "^0.0.3"
+    "react-bounding-box": "^0.0.4"
   },
   "peerDependencies": {
     "react": "^16.10.1"
