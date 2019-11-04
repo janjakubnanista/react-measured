@@ -1,0 +1,33 @@
+{
+  "name": "@react-width-height/native",
+  "version": "0.0.1",
+  "description": "React width & height providers for React Native",
+  "private": true,
+  "keywords": [
+    "React",
+    "\"React",
+    "Native\"",
+    "Width",
+    "Height",
+    "Size",
+    "Dimensions"
+  ],
+  "author": "Jan Jakub Nanista <jan.jakub.nanista@gmail.com>",
+  "homepage": "https://github.com/janjakubnanista/react-width-height#readme",
+  "license": "ISC",
+  "main": "build/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "build"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/janjakubnanista/react-width-height.git"
+  },
+  "bugs": {
+    "url": "https://github.com/janjakubnanista/react-width-height/issues"
+  }
+}
