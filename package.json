@@ -1,0 +1,28 @@
+{
+  "name": "react-width-height",
+  "version": "0.0.0",
+  "author": "Jan Jakub Nanista <jan.jakub.nanista@gmail.com>",
+  "license": "ISC",
+  "private": true,
+  "scripts": {
+    "build": "lerna run build",
+    "clean": "lerna run clean",
+    "test": "lerna run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/janjakubnanista/react-width-height.git"
+  },
+  "devDependencies": {
+    "lerna": "^3.16.4"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/react-native",
+      "**/react-native/**"
+    ]
+  }
+}
