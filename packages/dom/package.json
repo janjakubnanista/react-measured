@@ -2,9 +2,7 @@
   "name": "@react-width-height/dom",
   "version": "0.1.0",
   "description": "Width & height providers for React",
-  "main": "dist/index.cjs.js",
-  "browser": "dist/index.umd.js",
-  "module": "dist/index.es.js",
+  "main": "dist/index.js",
   "files": [
     "dist"
   ],
@@ -64,6 +62,7 @@
     "@types/styled-components": "^4.1.19",
     "@typescript-eslint/eslint-plugin": "^2.3.2",
     "@typescript-eslint/parser": "^2.3.2",
+    "@wessberg/rollup-plugin-ts": "^1.1.73",
     "babel-loader": "^8.0.6",
     "enzyme": "^3.10.0",
     "eslint": "^6.5.1",

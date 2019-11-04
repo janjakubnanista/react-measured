@@ -1,4 +1,4 @@
-import typescript from 'rollup-plugin-typescript2';
+import ts from '@wessberg/rollup-plugin-ts';
 import pkg from './package.json';
 
 export default [
@@ -6,15 +6,13 @@ export default [
     input: 'src/index.ts',
     external: ['react'],
     output: [
-      { file: pkg.main, format: 'cjs' },
-      { file: pkg.module, format: 'es' },
       {
-        file: pkg.browser,
-        format: 'umd',
+        file: pkg.main,
+        format: 'cjs',
         name: '@react-width-height/core',
         globals: { react: 'React' },
       },
     ],
-    plugins: [typescript()],
+    plugins: [ts()],
   },
 ];

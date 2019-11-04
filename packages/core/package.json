@@ -12,9 +12,7 @@
   "author": "Jan Jakub Nanista <jan.jakub.nanista@gmail.com>",
   "homepage": "https://github.com/janjakubnanista/react-width-height#readme",
   "license": "ISC",
-  "main": "dist/index.cjs.js",
-  "browser": "dist/index.umd.js",
-  "module": "dist/index.es.js",
+  "main": "dist/index.js",
   "files": [
     "dist"
   ],
@@ -39,6 +37,7 @@
   "devDependencies": {
     "@types/react": "16.9.11",
     "@types/react-dom": "16.9.3",
+    "@wessberg/rollup-plugin-ts": "^1.1.73",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
     "jest": "^24.9.0",

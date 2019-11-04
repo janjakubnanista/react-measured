@@ -26,13 +26,7 @@
     "lib": [
       "dom",
       "esnext"
-    ],
-    "baseUrl": ".",
-    "paths": {
-      "~/*": [
-        "packages/*"
-      ]
-    }
+    ]
   },
   "exclude": [
     "node_modules",
