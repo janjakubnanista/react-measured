@@ -1,6 +1,6 @@
 {
   "name": "react-measured-native",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "React width & height providers for React Native",
   "private": true,
   "keywords": [
