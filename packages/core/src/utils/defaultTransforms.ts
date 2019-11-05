@@ -7,3 +7,9 @@ export const discardPosition: CheckerTransform<BoundingBox> = boundingBox => ({
   bottom: NaN,
   left: NaN,
 });
+
+export const discardSize: CheckerTransform<BoundingBox> = boundingBox => ({
+  ...boundingBox,
+  width: NaN,
+  height: NaN,
+});
