@@ -299,3 +299,7 @@ interface BoundingBox {
 ```
 
 **IMPORTANT** `top`, `right`, `bottom` and `left` are all measured from the left top corner of the reference element, they do not act like e.g. CSS `bottom` or `right` values that are measured relative to the bottom edge of the container.
+
+## Issues
+
+Please use [the github issue tracker](https://github.com/janjakubnanista/react-measured/issues) to submit any bugs or feature requests.
