@@ -1,8 +1,10 @@
 import 'jest';
 import { createChecker } from '../createChecker';
-import { BoundingBox, identity } from 'react-measured';
+import { BoundingBox } from 'react-measured';
 import { createRef, MutableRefObject } from 'react';
-import { CheckerTransform, CheckerImplementation } from 'react-measured';
+import { CheckerTransform, Checker } from 'react-measured';
+
+const identity = <A>(value: A): A => value;
 
 const mockRequestAnimationFrame = jest.spyOn(window, 'requestAnimationFrame');
 const mockCancelAnimationFrame = jest.spyOn(window, 'cancelAnimationFrame');
@@ -53,7 +55,7 @@ describe('createChecker', () => {
   const anotherElement: HTMLElement = createElement();
 
   let defaultMeasure: jest.Mock;
-  let checker: CheckerImplementation<HTMLElement>;
+  let checker: Checker<HTMLElement>;
   let defaultOnChange: jest.Mock;
 
   beforeEach(() => {

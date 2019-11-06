@@ -2,7 +2,7 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { withKnobs } from '@storybook/addon-knobs';
-import { BoundingBoxProvider } from '../src/index';
+import { Measured } from '../src';
 import { Container, Button, Heading1, Paragraph, Heading2 } from './components';
 import styled from 'styled-components';
 import { useState } from '@storybook/addons';
@@ -54,7 +54,7 @@ stories.add(
           </Paragraph>
 
           <Button onClick={onToggle1} style={{ position: 'relative' }}>
-            <BoundingBoxProvider
+            <Measured.div
               onBoundingBoxChange={setBoundingBox1}
               style={{ position: 'absolute', top: 0, right: 0, bottom: 0, left: 0 }}
             />
@@ -72,7 +72,7 @@ stories.add(
               <Paragraph>What about a nested popover though, would that work?</Paragraph>
 
               <Button onClick={onToggle2} style={{ position: 'relative', marginTop: 20 }}>
-                <BoundingBoxProvider
+                <Measured.div
                   onBoundingBoxChange={setBoundingBox3}
                   style={{ position: 'absolute', top: 0, right: 0, bottom: 0, left: 0 }}
                 />
@@ -95,7 +95,7 @@ stories.add(
                   <Paragraph>And I could go on like this but we both have better things to do I guess.</Paragraph>
 
                   <Button onClick={onToggle2} style={{ position: 'relative', marginTop: 20 }}>
-                    <BoundingBoxProvider onBoundingBoxChange={setBoundingBox2} />
+                    <Measured.div onBoundingBoxChange={setBoundingBox2} />
                     Close the dropdown now
                   </Button>
                 </>
@@ -107,7 +107,7 @@ stories.add(
                     aligned.
                   </Paragraph>
                   <Button onClick={onToggle1}>
-                    <BoundingBoxProvider onBoundingBoxChange={setBoundingBox4} />
+                    <Measured.div onBoundingBoxChange={setBoundingBox4} />
                     Show the button
                   </Button>
                 </>

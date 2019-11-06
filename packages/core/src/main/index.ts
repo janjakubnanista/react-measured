@@ -1,2 +1,2 @@
-export * from './createBoundingBoxProvider';
+export * from './createMeasured';
 export * from './createUseBoundingBox';

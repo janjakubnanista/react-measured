@@ -16,25 +16,41 @@ Sometimes you need access to size and/or position of a component DOM element, ty
 
 In these cases you usually end up using some sort of stateful component logic based on the `resize` event of the `window` object. The problem with this solution is that your layout might change even though window dimensions haven't.
 
-That is where `react-measured-dom` comes in:
+That is where `react-measured-dom` comes in!
+
+## In this guide
+
+- <a href="#installation">Installation</a>
+- <a href="#api">API Docs</a>
+  - <a href="#api/Measured">`Measured`</a>
+    - <a href="#api/Measured/DOM">`Measured` for DOM nodes</a>
+    - <a href="#api/Measured/HOC">`Measured` as HOC</a>
+    - <a href="#api/Measured/styled-components">`Measured` with `styled-components`</a>
+    - <a href="#api/Measured/props">`Measured` element props</a>
+  - <a href="#api/useBoundingBox">`useBoundingBox`</a>
+    - <a href="#api/useBoundingBox/basic">`useBoundingBox` basic API</a>
+    - <a href="#api/useBoundingBox/transforms">`useBoundingBox` transforms</a>
+  - <a href="#api/BoundingBox">`BoudingBox`</a>
+
+### Quick example
 
 ```JSX
 import React from 'react';
-import { BoundingBoxProvider } from 'react-measured-dom';
+import { Measured } from 'react-measured-dom';
 
 const MyComponent: React.FC = () => (
-  // BoundingBoxProvider accepts all valid <div/> props
-  <BoundingBoxProvider style={{ ... }} className='...'>
+  <Measured.div className='full-size'>
     {box => (
       {/* Let's say you are rendering a Chart */}
       <Chart width={box.width} height={box.height} />
     )}
-  </BoundingBoxProvider>
+  </Measured.div>
 );
 ```
 
 <a href="#api">Check out the API docs</a> to get started!
 
+<a id="installation"></a>
 ## Installation
 
 `react-measured-dom` is available as an NPM module (along with its TypeScript definitions):
@@ -51,43 +67,106 @@ yarn add react-measured-dom
 <a id="api"></a>
 ## API Documentation
 
-### `BoundingBoxProvider`
+<a id="api/Measured"></a>
+### `Measured`
 
 ```JSX
-import { BoundingBoxProvider } from 'react-measured-dom';
+import { Measured } from 'react-measured-dom';
 ```
 
-Probably the most interesting export - a component that gives you access to its bounding box.
+<a id="api/Measured/DOM"></a>
+#### Using predefined DOM elements
 
-This component renders a `div` element under the hood and passes all HTML attributes down to this element. Besides these it accepts the following props:
+Probably the most interesting export that gives you instant access to all pre-wrapped HTML elements:
 
-```TypeScript
-interface BoundingBoxProviderProps {
-  boundingBoxTransforms?: CheckerTransformInput[];
-  // children?: BoundingBoxProviderChildrenFunction | React.ReactNode;
-  // onBoundingBoxChange?: (props: BoundingBox | undefined) => void;
-  positionOnly?: boolean;
-  sizeOnly?: boolean;
-}
+```JSX
+import React from 'react';
+import { Measured } from 'react-measured-dom';
+
+const MyComponent: React.FC = () => (
+  <>
+    <Measured.div />
+    <Measured.span />
+    <Measured.em />
+    <Measured.aside />
+    {/* See below for all supported elements */}
+  </>
+);
 ```
+
+`Measured` exposes the following HTML elements:
+
+`a`, `abbr`, `address`, `area`, `article`, `aside`, `audio`, `b`, `base`, `bdi`, `bdo`, `big`, `blockquote`, `body`, `br`, `button`, `canvas`, `caption`, `cite`, `code`, `col`, `colgroup`, `data`, `datalist`, `dd`, `del`, `details`, `dfn`, `dialog`, `div`, `dl`, `dt`, `em`, `embed`, `fieldset`, `figcaption`, `figure`, `footer`, `form`, `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `head`, `header`, `hgroup`, `hr`, `html`, `i`, `iframe`, `img`, `input`, `ins`, `kbd`, `keygen`, `label`, `legend`, `li`, `link`, `main`, `map`, `mark`, `menu`, `menuitem`, `meta`, `meter`, `nav`, `noscript`, `object`, `ol`, `optgroup`, `option`, `output`, `p`, `param`, `picture`, `pre`, `progress`, `q`, `rp`, `rt`, `ruby`, `s`, `samp`, `script`, `section`, `select`, `small`, `source`, `span`, `strong`, `style`, `sub`, `summary`, `sup`, `table`, `template`, `tbody`, `td`, `textarea`, `tfoot`, `th`, `thead`, `time`, `title`, `tr`, `track`, `u`, `ul`, `var`, `video`, `wbr`, `webview`
+
+<a id="api/Measured/HOC"></a>
+#### Using Measured as HOC
+
+If these are not enough (for example you want to wrap an existing component for measurements) you can go the HOC way:
+
+```JSX
+import React from 'react';
+import Label from '../your/label/component';
+import { Measured } from 'react-measured-dom';
+
+const MeasuredLabel = Measured(Label);
+
+const MyComponent: React.FC = () => (
+  // MeasuredLabel component accepts all the original props from Label
+  <MeasuredLabel someLabelProp="value">
+    {box => {
+      // Use the bounding box here
+    }}
+  </MeasuredLabel>
+);
+```
+
+**IMPORTANT** The `ref` of the wrapped element must be a ref to a `HTMLElement`!
+
+<a id="api/Measured/styled-components"></a>
+#### Using Measured with `styled-components`
+
+Since `react-measured-dom`'s only requirement is for the wrapped element to expose a `ref` containing an `HTMLElement`, it is possible to use it in conjunction with `styled-components` as well:
+
+```JSX
+import React from 'react';
+import styled from 'styled-components';
+import { Measured } from 'react-measured-dom';
+
+const StyledComponent = styled.div`
+  ...
+`;
+
+const MeasuredStyledComponent = Measured(StyledComponent);
+
+const MyComponent: React.FC = () => (
+  <MeasuredStyledComponent>
+    {box => {
+      // Use the bounding box here
+    }}
+  </MeasuredStyledComponent>
+);
+```
+
+<a id="api/Measured/props"></a>
+Besides the props of the wrapped element, `Measured` accepts the following props:
 
 #### children
 
 `children?: ReactNode | (box: BoundingBox) => ReactNode`
 
-Although `BoundingBoxProvider` can accept `ReactNode` as `children`, the default use case will most probably look like:
+Although `Measured.div` can accept `ReactNode` as `children`, the default use case will most probably look like:
 
 ```JSX
 const MyComponent = () => (
-  <BoundingBoxProvider>
+  <Measured.div>
     {boundingBox => (
       <Chart width={boundingBox.width} height={boundingBox.height}>
     )}
-  </BoundingBoxProvider>
+  </Measured.div>
 )
 ```
 
-In this case the `children` prop of `BoundingBoxProvider` is a render function that receives a single parameter, `boundingBox` (see <a href="#api/BoundingBox">`BoundingBox`</a> below).
+In this case the `children` prop of `Measured.div` is a render function that receives a single parameter, `boundingBox` (see <a href="#api/BoundingBox">`BoundingBox`</a> below).
 
 #### onBoundingBoxChange
 
@@ -101,9 +180,9 @@ const MyComponent = () => {
   const className = boundingBox && boundingBox.top < 0 ? "highlighted" : null
 
   <div>
-    <BoundingBoxProvider onBoundingBoxChange={setBoundingBox}>
+    <Measured.div onBoundingBoxChange={setBoundingBox}>
       ... Some children here, can also be a callback ...
-    </BoundingBoxProvider>
+    </Measured.div>
 
     <div className={className}>
       And the bounding box gets used somewhere else
@@ -122,11 +201,11 @@ If you are not interested in the element dimensions and only want to rerender wh
 
 ```JSX
 const MyComponent = () => (
-  <BoundingBoxProvider positionOnly>
+  <Measured.div positionOnly>
     {boundingBox => {
       // boundingBox will now have width & height set to NaN
     }}
-  </BoundingBoxProvider>
+  </Measured.div>
 )
 ```
 
@@ -140,11 +219,11 @@ If you are not interested in the element position and only want to rerender when
 
 ```JSX
 const MyComponent = () => (
-  <BoundingBoxProvider sizeOnly>
+  <Measured.div sizeOnly>
     {boundingBox => {
       // boundingBox will now have top, right, bottom and left set to NaN
     }}
-  </BoundingBoxProvider>
+  </Measured.div>
 )
 ```
 
@@ -152,24 +231,59 @@ In this case the `top`, `right`, `bottom` and `left` of the `boundingBox` (in bo
 
 **IMPORTANT** For most of the use cases you want to turn `sizeOnly` on since you don't want to be rerendering your charts or lists whenever e.g. the user scrolls the page.
 
-#### boundingBoxTransforms
-
-`boundingBoxTransforms?: ((box: BoundingBox) => BoundingBox)[]`
-
-This is an advanced use case prop for people that want to transform the bounding box measurements based on any external factors.
-
-These functions will be executed in order, the result of each passed to the next one. The result of the transform chain is then used to determine whether the bounding box has changed.
-
-**IMPORTANT** `sizeOnly` and `positionOnly` are internally implemented as such transforms and will be applied after your custom transforms.
-
-`useBoundingBox`
+<a id="api/useBoundingBox"></a>
+### `useBoundingBox`
 
 ```JSX
 import { useBoundingBox } from 'react-measured-dom';
 ```
 
+Sometimes you just want a more fine grained access to `react-measured-dom` capabilities. In those cases you can skip the HOC approach and measure a `ref` to an `HTMLElement` using `useBoundingBox`:
+
+```JSX
+const MyComponent = () => {
+  const ref = useRef<HTMLElement>();
+  const boundingBox: BoundingBox | undefined = useBoundingBox(ref);
+
+  // You can either use the boudingBox here or pass it around
+  // just remember, on the first render it is going to be `undefined`
+
+  return <div ref={ref}>
+    {/* ... */}
+  </div>
+}
+```
+
+<a id="api/useBoundingBox/basic"></a>
+#### Basic API
+
+```TypeScript
+useBoundingBox: (
+  ref: React.RefObject<HTMLElement>,
+  onChange?: (box: BoundingBox | undefined) => void,
+)
+```
+
+<a id="api/useBoundingBox/transforms"></a>
+#### Using transforms
+
+Sometimes you might want to tweak the measured size/position values depending on external factors (e.g. to discard size or position in order to optimise rendering). For that you can pass an array of transforms applied to the original measured `BoundingBox`.
+
+```TypeScript
+// For ease of use falsy values are also allowed
+type CheckerTransform = undefined | null | false | (box: BoundingBox) => BoundingBox;
+
+useBoundingBox: (
+  ref: React.RefObject<HTMLElement>,
+  onChange?: (box: BoundingBox | undefined) => void,
+  transforms: CheckerTransform[]
+) => BoundingBox
+```
+
+These will be applied left to right, the return value of one passed to the next.
+
 <a id="api/BoundingBox"></a>
-`BoundingBox`
+### `BoundingBox`
 
 A data container for information about a bounding box. Looks like:
 

@@ -9,7 +9,8 @@
   "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/janjakubnanista/react-width-height.git"
+    "url": "git+https://github.com/janjakubnanista/react-width-height.git",
+    "directory": "packages/dom"
   },
   "author": "Jan Jakub Nanista <jan.jakub.nanista@gmail.com>",
   "license": "MIT",

@@ -1,11 +1,9 @@
 import {
   BoundingBox,
-  CheckerItem,
   CheckerRef,
   CheckerTransform,
   CheckerChangeHandler,
-  CheckerUnregisterCallback,
-  CheckerImplementation,
+  Checker,
   CheckerTransformInput,
 } from 'react-measured';
 import { areBoundingBoxesEqual } from 'react-measured';
@@ -13,10 +11,16 @@ import { areBoundingBoxesEqual } from 'react-measured';
 // An internal type used for passing callbacks to be executed between animation frames
 type CheckerUpdateCallback = () => void;
 
+interface CheckerItem<T> {
+  ref: CheckerRef<T>;
+  transforms: CheckerTransform<BoundingBox>[];
+  onChange: CheckerChangeHandler;
+}
+
 const isValidTransform = (transform: CheckerTransformInput): transform is CheckerTransform<BoundingBox> => !!transform;
 
 // An implementation of Checker
-class Checker<T> {
+class AnimationFrameChecker<T> {
   private animationFrameId: number | undefined;
 
   private items: Set<CheckerItem<T>> = new Set();
@@ -93,7 +97,7 @@ class Checker<T> {
     ref: CheckerRef<T>,
     onChange: CheckerChangeHandler,
     ...transforms: CheckerTransformInput[]
-  ): CheckerUnregisterCallback {
+  ): () => void {
     const item: CheckerItem<T> = { ref, transforms: transforms.filter(isValidTransform), onChange };
     this.items.add(item);
     this.loop();
@@ -114,6 +118,6 @@ class Checker<T> {
   }
 }
 
-export const createChecker = <T>(measure: CheckerTransform<T>): CheckerImplementation<T> => {
-  return new Checker(measure);
+export const createChecker = <T>(measure: CheckerTransform<T>): Checker<T> => {
+  return new AnimationFrameChecker(measure);
 };

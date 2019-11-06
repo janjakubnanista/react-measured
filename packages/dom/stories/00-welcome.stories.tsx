@@ -2,7 +2,7 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { withKnobs } from '@storybook/addon-knobs';
-import { BoundingBoxProvider } from '../src/index';
+import { Measured } from '../src/index';
 import { boxStyles, Heading1, Paragraph } from './components';
 import styled from 'styled-components';
 import { useState } from '@storybook/addons';
@@ -99,7 +99,7 @@ const COLORS = {
   viridianGreen: '#009499',
 };
 
-const Rulers = styled(BoundingBoxProvider)`
+const Rulers = styled(Measured.div)`
   position: fixed;
   top: 0;
   right: 0;
@@ -170,7 +170,7 @@ const LotsOfSpaceRight = styled(LotsOfSpace)`
   align-items: flex-end;
 `;
 
-const Box = styled(BoundingBoxProvider)`
+const Box = styled(Measured.div)`
   ${boxStyles};
 `;
 

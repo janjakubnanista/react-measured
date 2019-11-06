@@ -1,3 +1,4 @@
+import React from 'react';
 import { BoundingBoxProviderChildrenFunction, BoundingBox } from '../types';
 
 const isBoundingBoxProviderChildrenFunction = (
