@@ -3,7 +3,6 @@ import {
   CheckerRef,
   CheckerTransform,
   CheckerChangeHandler,
-  CheckerUnregisterCallback,
   Checker,
   CheckerTransformInput,
 } from 'react-measured';
@@ -98,7 +97,7 @@ class AnimationFrameChecker<T> {
     ref: CheckerRef<T>,
     onChange: CheckerChangeHandler,
     ...transforms: CheckerTransformInput[]
-  ): CheckerUnregisterCallback {
+  ): () => void {
     const item: CheckerItem<T> = { ref, transforms: transforms.filter(isValidTransform), onChange };
     this.items.add(item);
     this.loop();
