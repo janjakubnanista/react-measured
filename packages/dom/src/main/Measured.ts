@@ -1,8 +1,7 @@
 import React from 'react';
-import { createMeasured, MeasuredComponentType } from 'react-measured';
+import { createMeasured, lazyValue, MeasuredComponentType } from 'react-measured';
 import { useBoundingBox } from '../main/useBoundingBox';
 import { htmlTags, HTMLTag } from '../utils/htmlTags';
-import { lazyValue } from '../utils/lazyValue';
 
 type HTMLMeasuredFunction = ReturnType<typeof createMeasured>;
 
