@@ -1,6 +1,6 @@
 # react-measured
 
-[![Build Status](https://travis-ci.org/janjakubnanista/react-width-height.svg?branch=master)](https://travis-ci.org/janjakubnanista/react-width-height)
+[![Build Status](https://travis-ci.org/janjakubnanista/react-width-height.svg?branch=master)](https://travis-ci.org/janjakubnanista/react-measured)
 
 Zero-dependency `React` bounding box providers and hooks for React.
 
