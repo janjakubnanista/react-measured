@@ -9,6 +9,7 @@ before_install:
   - yarn global add lerna
 install:
   - lerna bootstrap
+  - lerna -v
 script:
-  - yarn build
-  - yarn test
+  - lerna run build
+  - lerna run test
