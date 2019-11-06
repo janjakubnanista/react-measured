@@ -1,18 +1,16 @@
 import React from 'react';
-import { createMeasured, lazyValue, MeasuredComponentType } from 'react-measured';
+import { createMeasured, lazyValue, Measured, MeasuredComponentType } from 'react-measured';
 import { useBoundingBox } from '../main/useBoundingBox';
 import { htmlTags, HTMLTag } from '../utils/htmlTags';
 
-type HTMLMeasuredFunction = ReturnType<typeof createMeasured>;
-
-type HTMLMeasured = HTMLMeasuredFunction &
+type HTMLMeasured = Measured<HTMLElement> &
   {
-    [T in HTMLTag]: MeasuredComponentType<React.ComponentProps<T>>;
+    [T in keyof React.ReactHTML]: MeasuredComponentType<React.ComponentProps<T>>;
   };
 
 const Measured: HTMLMeasured = createMeasured<HTMLElement>(useBoundingBox) as HTMLMeasured;
 
-htmlTags.forEach(<T extends HTMLTag>(htmlTag: T) => {
+htmlTags.forEach((htmlTag: HTMLTag) => {
   Object.defineProperty(Measured, htmlTag, {
     get: lazyValue(() => Measured(htmlTag)),
   });
