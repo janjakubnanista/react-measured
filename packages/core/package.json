@@ -19,7 +19,8 @@
   "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/janjakubnanista/react-width-height.git"
+    "url": "git+https://github.com/janjakubnanista/react-width-height.git",
+    "directory": "packages/core"
   },
   "scripts": {
     "build": "rollup -c",
