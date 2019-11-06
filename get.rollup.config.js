@@ -5,8 +5,6 @@ import { terser } from 'rollup-plugin-terser';
 
 const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 
-console.warn('IS_PRODUCTION', IS_PRODUCTION);
-
 export default packageName => ({
   input: 'src/index.ts',
   external: ['react'],
