@@ -18,7 +18,8 @@ yarn add react-measured
 
 **IMPORTANT** `react-measured` provides core functionality for bounding box providers.
 You most probably don't want to use it directly. If you are developing a browser based React app
-you might want to check out [`react-measured-dom`](https://www.npmjs.com/package/react-measured-dom). For native development [`react-measured-native`](https://www.npmjs.com/package/react-measured-dom) package will soon be available for production use.
+you might want to check out [`react-measured-dom`](https://www.npmjs.com/package/react-measured-dom).
+For native development [`react-measured-native`](https://www.npmjs.com/package/react-measured-native) package will soon be available for production use.
 
 ## Issues
 
