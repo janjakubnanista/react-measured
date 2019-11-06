@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 
-import { BoundingBoxProvider } from '../../src';
+import { Measured } from '../../src';
 import { Rotate, RelativePosition, AbsolutePosition } from './position';
 import { BoundingBox } from 'react-measured';
 
@@ -12,15 +12,11 @@ export interface BubbleProps {
 
 export const Bubble: React.FC<BubbleProps> = ({ children, color = '#fc0', pointAt }) => {
   return (
-    <BoundingBoxProvider>
+    <Measured.div>
       {({ top, left, width, height }: BoundingBox): ReactNode => {
         const a = pointAt ? pointAt.left + pointAt.width / 2 - left - width / 2 : 0;
         const b = pointAt ? pointAt.top + pointAt.height / 2 - top - height / 2 : 0;
         const angle = Math.atan2(a, -b);
-
-        // return <Rotate angle={angle}>
-        //   <BubbleShape style={{ borderColor: color }}/>
-        // </Rotate>;
 
         return (
           <RelativePosition left={0} top={0}>
@@ -49,7 +45,7 @@ export const Bubble: React.FC<BubbleProps> = ({ children, color = '#fc0', pointA
           </RelativePosition>
         );
       }}
-    </BoundingBoxProvider>
+    </Measured.div>
   );
 };
 

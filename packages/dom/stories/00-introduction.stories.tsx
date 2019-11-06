@@ -2,14 +2,13 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { number, withKnobs, select } from '@storybook/addon-knobs';
-import { BoundingBoxProvider } from '../src/index';
+import { Measured } from '../src/index';
 import { boxStyles, Heading1, Paragraph } from './components';
 import styled from 'styled-components';
 import { useState } from '@storybook/addons';
 import { Bubble } from './components/visual';
 import { FixedPosition } from './components/position';
 import { Motion, spring } from 'react-motion';
-import { BoundingBoxOrigin } from '../src/components/BoundingBoxProvider';
 import { BoundingBox } from 'react-measured';
 import { left, right } from './utils/points';
 
@@ -33,7 +32,6 @@ const stories = storiesOf('react-width-height', module);
 stories.addDecorator(withKnobs as any);
 
 stories.add('Introduction', () => {
-  const origin = select<BoundingBoxOrigin>('Origin', ['viewport', 'document'], 'viewport');
   const [firstBoundingBox, setFirstBoundingBox] = useState<BoundingBox | undefined>(undefined);
   const [secondBoundingBox, setSecondBoundingBox] = useState<BoundingBox | undefined>(undefined);
 
@@ -200,7 +198,7 @@ const LotsOfSpaceRight = styled(LotsOfSpace)`
   align-items: flex-end;
 `;
 
-const Box = styled(BoundingBoxProvider)`
+const Box = styled(Measured.div)`
   ${boxStyles};
 `;
 
