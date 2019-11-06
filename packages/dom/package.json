@@ -1,6 +1,6 @@
 {
   "name": "react-measured-dom",
-  "version": "0.0.5",
+  "version": "1.0.0",
   "description": "Width & height providers for React",
   "main": "dist/index.js",
   "files": [
@@ -28,7 +28,7 @@
     "Size"
   ],
   "dependencies": {
-    "react-measured": "^0.0.5"
+    "react-measured": "^1.0.0"
   },
   "peerDependencies": {
     "react": "^16.10.1"
