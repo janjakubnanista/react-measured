@@ -7,9 +7,9 @@ cache:
     node_modules
 before_install:
   - yarn global add lerna
+  - lerna -v
 install:
   - lerna bootstrap
-  - lerna -v
 script:
   - lerna run build
   - lerna run test
