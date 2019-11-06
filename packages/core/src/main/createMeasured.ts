@@ -24,14 +24,14 @@ export type MeasurableComponentProps<T, P extends {} = {}> = Omit<React.PropsWit
 export type MeasuredComponentType<P extends {}> = React.FC<Omit<P, 'ref'> & MeasuredProps>;
 
 // The type of mesured HOC creator for generic components
-export interface MeasuredComponent<I> {
+interface MeasuredComponent<I> {
   <T extends React.ComponentType<P>, P extends MeasurableComponentProps<I, {}>>(type: T): MeasuredComponentType<
     React.ComponentProps<T>
   >;
 }
 
 // The type of mesured HOC creator for HTML elements
-export interface MeasuredHTML<I extends HTMLElement> extends MeasuredComponent<I> {
+interface MeasuredHTML<I extends HTMLElement> extends MeasuredComponent<I> {
   <T extends keyof React.ReactHTML, P extends React.ComponentProps<T>>(type: T): MeasuredComponentType<P>;
 }
 
