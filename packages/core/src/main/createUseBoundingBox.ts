@@ -1,22 +1,32 @@
 import { useState, useEffect } from 'react';
-import { BoundingBox, CheckerImplementation, UseBoundingBox } from '../types';
-import { noop } from '../utils/noop';
+import { BoundingBox, Checker, CheckerRef, CheckerChangeHandler, CheckerTransformInput } from '../types';
 
-export const createUseBoundingBox = <T>(checker: CheckerImplementation<T>): UseBoundingBox<T> => {
-  return (ref, onChange = noop, ...transforms): BoundingBox | undefined => {
+const noop = () => undefined;
+
+const NO_TRANSFORMS: CheckerTransformInput[] = [];
+
+export type UseBoundingBox<T> = (
+  ref: CheckerRef<T>,
+  onChange?: CheckerChangeHandler,
+  transforms?: CheckerTransformInput[],
+) => BoundingBox | undefined;
+
+export const createUseBoundingBox = <T>(checker: Checker<T>): UseBoundingBox<T> => {
+  return (ref, onChange = noop, transforms = NO_TRANSFORMS): BoundingBox | undefined => {
     const [boundingBox, setBoundingBox] = useState<BoundingBox>();
 
     useEffect(() => {
       const callback = (newBoundingBox: BoundingBox): void => {
         setBoundingBox(newBoundingBox);
-        onChange(newBoundingBox);
+
+        onChange && onChange(newBoundingBox);
       };
 
       return checker.register(ref, callback, ...transforms);
-    }, [ref, onChange, ...transforms]);
+    }, [ref, onChange, transforms]);
 
     useEffect(() => {
-      return (): void => onChange(undefined);
+      return (): void => onChange && onChange(undefined);
     }, []);
 
     return boundingBox;
