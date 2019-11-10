@@ -1,7 +1,7 @@
 {
   "name": "react-measured",
   "version": "1.0.0",
-  "description": "Core functionality for react-width-height",
+  "description": "Core functionality for react-measured",
   "keywords": [
     "React",
     "Dimensions",
@@ -10,7 +10,7 @@
     "Size"
   ],
   "author": "Jan Jakub Nanista <jan.jakub.nanista@gmail.com>",
-  "homepage": "https://github.com/janjakubnanista/react-width-height#readme",
+  "homepage": "https://github.com/janjakubnanista/react-measured#readme",
   "license": "ISC",
   "main": "dist/index.js",
   "files": [
@@ -19,7 +19,7 @@
   "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/janjakubnanista/react-width-height.git",
+    "url": "git+https://github.com/janjakubnanista/react-measured.git",
     "directory": "packages/core"
   },
   "scripts": {
@@ -29,7 +29,7 @@
     "test:watch": "yarn test --watchAll"
   },
   "bugs": {
-    "url": "https://github.com/janjakubnanista/react-width-height/issues"
+    "url": "https://github.com/janjakubnanista/react-measured/issues"
   },
   "peerDependencies": {
     "react": "^16.10.1"

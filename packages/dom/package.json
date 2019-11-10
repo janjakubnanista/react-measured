@@ -9,15 +9,15 @@
   "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/janjakubnanista/react-width-height.git",
+    "url": "git+https://github.com/janjakubnanista/react-measured.git",
     "directory": "packages/dom"
   },
   "author": "Jan Jakub Nanista <jan.jakub.nanista@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/janjakubnanista/react-width-height/issues"
+    "url": "https://github.com/janjakubnanista/react-measured/issues"
   },
-  "homepage": "https://github.com/janjakubnanista/react-width-height#readme",
+  "homepage": "https://github.com/janjakubnanista/react-measured#readme",
   "keywords": [
     "React",
     "React DOM",
