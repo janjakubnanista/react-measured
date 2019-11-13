@@ -1,11 +1,10 @@
-import React from 'react';
 import { createMeasured, lazyValue, Measured, MeasuredComponentType } from 'react-measured';
 import { useBoundingBox } from '../main/useBoundingBox';
 import { htmlTags, HTMLTag } from '../utils/htmlTags';
 
 type HTMLMeasured = Measured<HTMLElement> &
   {
-    [T in keyof React.ReactHTML]: MeasuredComponentType<React.ComponentProps<T>>;
+    [T in HTMLTag]: MeasuredComponentType<T>;
   };
 
 const Measured: HTMLMeasured = createMeasured<HTMLElement>(useBoundingBox) as HTMLMeasured;

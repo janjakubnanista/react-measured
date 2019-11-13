@@ -28,7 +28,7 @@ const getCallback = (top: number, left: number) => `onBoundingBoxChange(({ top: 
 </BoundingBoxProvider>
 `;
 
-const stories = storiesOf('react-width-height', module);
+const stories = storiesOf('react-measured', module);
 stories.addDecorator(withKnobs as any);
 
 stories.add('Introduction', () => {

@@ -10,7 +10,7 @@ import { Bubble } from './components/visual';
 import { FixedPosition } from './components/position';
 import { BoundingBox } from 'react-measured';
 
-const stories = storiesOf('react-width-height', module);
+const stories = storiesOf('react-measured', module);
 stories.addDecorator(withKnobs as any);
 
 const BUBBLE_TARGET = { top: 100, left: 200, width: 100, height: 100, right: 200, bottom: 200 };
