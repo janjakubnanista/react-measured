@@ -24,7 +24,9 @@
     "directory": "packages/core"
   },
   "scripts": {
-    "build": "rollup -c",
+    "build": "yarn build:dist && yarn build:lint",
+    "build:dist": "rollup -c",
+    "build:lint": "eslint --fix dist --ext d.ts",
     "clean": "rm -rf dist",
     "test": "jest",
     "test:watch": "yarn test --watchAll"
