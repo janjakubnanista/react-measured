@@ -51,7 +51,7 @@
     "ts-loader": "^6.2.0",
     "ts-node": "^8.4.1",
     "tslib": "^1.10.0",
-    "typescript": "^3.6.4"
+    "typescript": "^3.7.2"
   },
   "gitHead": "5008aa0d96451a4e665d17496a669c03d807cbeb"
 }
