@@ -1,7 +1,6 @@
 import { createUseBoundingBox } from 'react-measured';
-import { createChecker } from '../utils/createChecker';
-import { measureUsingBoundingClientRect } from '../utils/measureUsingBoundingClientRect';
+import { createHTMLChecker } from './createHTMLChecker';
 
-const checker = createChecker(measureUsingBoundingClientRect);
+const checker = createHTMLChecker();
 
 export const useBoundingBox = createUseBoundingBox(checker);

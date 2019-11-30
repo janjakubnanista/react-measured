@@ -1,15 +1,15 @@
-import React, { useMemo } from 'react';
+import React, { useCallback } from 'react';
 import { discardPosition, discardSize } from '../utils/defaultTransforms';
-import { BoundingBox, BoundingBoxProviderChildrenFunction, CheckerTransformInput } from '../types';
+import { BoundingBox, BoundingBoxProviderChildrenFunction, CheckerTransform } from '../types';
 import { UseBoundingBox } from './createUseBoundingBox';
 import { renderChildren } from '../utils/renderChildren';
 
-export type MeasuredProps = {
+export interface MeasuredProps {
   children?: BoundingBoxProviderChildrenFunction | React.ReactNode;
   positionOnly?: boolean;
   sizeOnly?: boolean;
   onBoundingBoxChange?: (props: BoundingBox | undefined) => void;
-};
+}
 
 export type Measured<I> = <T extends MeasurableComponentType<I>>(type: T) => MeasuredComponentType<T>;
 
@@ -43,13 +43,18 @@ export function createMeasured<I>(useBoundingBox: UseBoundingBox<I>): Measured<I
       //
       // (when you only need the element size you for sure don't need the component to rerender
       // with every scroll)
-      const transforms: CheckerTransformInput[] = useMemo(
-        () => [positionOnly && discardSize, sizeOnly && discardPosition],
-        [discardSize, discardPosition],
+      const transform: CheckerTransform<BoundingBox> = useCallback(
+        boundingBox => {
+          if (sizeOnly) return discardPosition(boundingBox);
+          if (positionOnly) return discardSize(boundingBox);
+
+          return boundingBox;
+        },
+        [sizeOnly, positionOnly],
       );
 
       // Now let's get the bounding box!
-      const boundingBox = useBoundingBox(ref, onBoundingBoxChange, transforms);
+      const boundingBox = useBoundingBox(ref, onBoundingBoxChange, transform);
 
       // Aaaaaand render
       return React.createElement(type, { ...rest, ref }, renderChildren(children, boundingBox));
