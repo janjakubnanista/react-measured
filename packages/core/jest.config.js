@@ -1,5 +1,1 @@
-module.exports = {
-  preset: 'ts-jest',
-  setupFilesAfterEnv: ['<rootDir>jest.setup.js'],
-  verbose: true,
-};
+module.exports = require('../../jest.config');
