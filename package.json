@@ -7,8 +7,7 @@
   "scripts": {
     "build": "lerna run build",
     "clean": "lerna run clean",
-    "test": "lerna run test",
-    "prepublishOnly": "NODE_ENV=production lerna run build"
+    "test": "lerna run test"
   },
   "repository": {
     "type": "git",
@@ -20,10 +19,6 @@
   "workspaces": {
     "packages": [
       "packages/*"
-    ],
-    "nohoist": [
-      "**/react-native",
-      "**/react-native/**"
     ]
   }
 }

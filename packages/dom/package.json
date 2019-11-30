@@ -44,7 +44,8 @@
     "storybook:build": "build-storybook",
     "storybook:start": "start-storybook -p 6006",
     "storybook:publish": "storybook-to-ghpages",
-    "gh-pages": "npm run gh-pages:clean && npm run gh-pages:build && npm run gh-pages:publish"
+    "gh-pages": "npm run gh-pages:clean && npm run gh-pages:build && npm run gh-pages:publish",
+    "watch": "rollup -cw"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",

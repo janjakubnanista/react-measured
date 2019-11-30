@@ -29,7 +29,8 @@
     "build:lint": "eslint --fix dist --ext d.ts",
     "clean": "rm -rf dist",
     "test": "jest",
-    "test:watch": "yarn test --watchAll"
+    "test:watch": "yarn test --watchAll",
+    "watch": "rollup -cw"
   },
   "bugs": {
     "url": "https://github.com/janjakubnanista/react-measured/issues"
