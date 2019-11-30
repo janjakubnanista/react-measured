@@ -1,46 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { storiesOf } from '@storybook/react';
-import { number, withKnobs, select } from '@storybook/addon-knobs';
+import { withKnobs } from '@storybook/addon-knobs';
 import { Measured } from '../src/index';
 import { boxStyles, Heading1, Paragraph } from './components';
 import styled from 'styled-components';
-import { useState } from '@storybook/addons';
 import { Bubble } from './components/visual';
 import { FixedPosition } from './components/position';
 import { Motion, spring } from 'react-motion';
 import { BoundingBox } from 'react-measured';
 import { left, right } from './utils/points';
 
-const RENDER_EXAMPLE = `<BoundingBoxProvider>
-  {box => (
-    \`\${box.width} x \${box.height}\`
-  )}
-</BoundingBoxProvider>
-`;
-
-const getCallback = (top: number, left: number) => `onBoundingBoxChange(({ top: ${top}px, left: ${left}px }) => {<br/>
-\u00A0\u00A0<br/>
-})
-  {box => (
-    \`\${box.width} x \${box.height}\`
-  )}
-</BoundingBoxProvider>
-`;
-
 const stories = storiesOf('react-measured', module);
 stories.addDecorator(withKnobs as any);
 
 stories.add('Introduction', () => {
-  const [firstBoundingBox, setFirstBoundingBox] = useState<BoundingBox | undefined>(undefined);
-  const [secondBoundingBox, setSecondBoundingBox] = useState<BoundingBox | undefined>(undefined);
-
   const [firstStopBoundingBox, setFirstStopBoundingBox] = useState<BoundingBox | undefined>(undefined);
   const [secondStopBoundingBox, setSecondStopBoundingBox] = useState<BoundingBox | undefined>(undefined);
   const [thirdStopBoundingBox, setThirdStopBoundingBox] = useState<BoundingBox | undefined>(undefined);
 
   const threshold = 0;
-  // const stopBoundingBox = thirdStopBoundingBox && thirdStopBoundingBox.top < threshold ? thirdStopBoundingBox
   const stopBoundingBox =
     firstStopBoundingBox && firstStopBoundingBox.top < threshold
       ? secondStopBoundingBox && secondStopBoundingBox.top < threshold
@@ -67,65 +46,6 @@ stories.add('Introduction', () => {
 
       <Paragraph>And they can use it whenever they want</Paragraph>
 
-      {firstBoundingBox && (
-        // <FixedPosition top={Math.min(300, firstBoundingBox.bottom + 150)} left="8vw">
-        //   <Bubble color="#FF6F61" pointAt={firstBoundingBox} children={'like the\u00A0one there'} />
-        // </FixedPosition>
-        // <FixedPosition style={{ top: firstBoundingBox.bottom < 100 ? 'absolute' : 'fixed' }} top={Math.min(300, firstBoundingBox.bottom + 150)} left="8vw">
-        //   <Bubble color="#FF6F61" pointAt={firstBoundingBox} children={'like the\u00A0one there'} />
-        // </FixedPosition>
-        <FixedPosition
-          style={{ transform: `translate(0px, ${Math.min(400, firstBoundingBox.bottom)}px)` }}
-          top={0}
-          left="8vw"
-        >
-          <Bubble color="#FF6F61" pointAt={firstBoundingBox}>
-            like the one there
-          </Bubble>
-        </FixedPosition>
-      )}
-
-      {/* <LotsOfSpaceRight>
-        <HorizontalContainer>
-          <Box origin={origin} onBoundingBoxChange={setFirstBoundingBox}>
-            {boundingBox => (
-              <div>
-                {Math.round(boundingBox.left)} x {Math.round(boundingBox.top)}
-              </div>
-            )}
-          </Box>
-        </HorizontalContainer>
-      </LotsOfSpaceRight> */}
-
-      {/* <LotsOfSpace>
-        <Heading1>They can also let other components know</Heading1>
-        {secondBoundingBox && (
-          <Paragraph>
-            {`onBoundingBoxChange(({ top: ${format(secondBoundingBox.top)}px, left: ${format(
-              secondBoundingBox.left,
-            )}px }) => {`}
-            <br />
-            <br />
-            {`})`}
-          </Paragraph>
-        )}
-      </LotsOfSpace> */}
-
-      {/* <LotsOfSpace>
-        {secondBoundingBox && (
-          <FixedPosition
-            left={secondBoundingBox.left + secondBoundingBox.width / 2 - 50}
-            top={secondBoundingBox.top - 130}
-          >
-            <Bubble color="#009499" children={'like this\u00A0one here'} />
-          </FixedPosition>
-        )}
-
-        <BouncyBox onBoundingBoxChange={setSecondBoundingBox}>
-          {() => 'This one is animated using CSS keyframe animation'}
-        </BouncyBox>
-      </LotsOfSpace> */}
-
       <SomeSpace>
         <Box onBoundingBoxChange={setFirstStopBoundingBox} />
       </SomeSpace>
@@ -137,8 +57,6 @@ stories.add('Introduction', () => {
       <SomeSpace>
         <Box onBoundingBoxChange={setThirdStopBoundingBox} />
       </SomeSpace>
-
-      {/* {stopBoundingBox && <AB boundingBox={stopBoundingBox} />} */}
 
       {stopBoundingBoxPlace && (
         <Motion
@@ -152,7 +70,6 @@ stories.add('Introduction', () => {
           }}
         >
           {interpolated => {
-            // console.log('interplated', interpolated);
             return (
               <FixedPosition top={interpolated.top} left={interpolated.left}>
                 <Bubble color="#263056" pointAt={stopBoundingBoxAnchor}>
@@ -165,7 +82,7 @@ stories.add('Introduction', () => {
       )}
 
       <LotsOfSpace></LotsOfSpace>
-      <LotsOfSpace>a</LotsOfSpace>
+      <LotsOfSpace></LotsOfSpace>
       <LotsOfSpace></LotsOfSpace>
     </Container>
   );

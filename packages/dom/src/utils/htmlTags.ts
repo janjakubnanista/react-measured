@@ -1,6 +1,6 @@
 import React from 'react';
 
-export type HTMLTag = keyof JSX.IntrinsicElements;
+export type HTMLTag = keyof React.ReactHTML;
 
 export const htmlTags: HTMLTag[] = [
   'a',

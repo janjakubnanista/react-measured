@@ -1,34 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { withKnobs } from '@storybook/addon-knobs';
 import { Measured } from '../src/index';
 import { boxStyles, Heading1, Paragraph } from './components';
 import styled from 'styled-components';
-import { useState } from '@storybook/addons';
 import { BoundingBox } from 'react-measured';
 import { formatDistance } from './utils/format';
-
-const RENDER_EXAMPLE = `<BoundingBoxProvider>
-  {box => (
-    \`\${box.width} x \${box.height}\`
-  )}
-</BoundingBoxProvider>
-`;
 
 const WINDOW_ADD_LISTENER = `window.addEventListener(
   'resize',
   this.handleResize
 );`;
-
-const getCallback = (top: number, left: number) => `onBoundingBoxChange(({ top: ${top}px, left: ${left}px }) => {<br/>
-\u00A0\u00A0<br/>
-})
-  {box => (
-    \`\${box.width} x \${box.height}\`
-  )}
-</BoundingBoxProvider>
-`;
 
 const stories = storiesOf('react-measured-dom', module);
 stories.addDecorator(withKnobs);
@@ -172,14 +155,6 @@ const LotsOfSpaceRight = styled(LotsOfSpace)`
 
 const Box = styled(Measured.div)`
   ${boxStyles};
-`;
-
-const EmptyBox = styled.div`
-  ${boxStyles};
-`;
-
-const BouncyBox = styled(Box)`
-  animation: bounce 1s infinite alternate;
 `;
 
 const format = (value: number) => Math.round(value);

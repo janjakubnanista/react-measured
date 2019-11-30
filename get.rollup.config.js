@@ -7,7 +7,7 @@ const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 
 export default packageName => ({
   input: 'src/index.ts',
-  external: ['react'],
+  external: ['react', 'react-native'],
   output: [
     {
       file: 'dist/index.js',
@@ -17,5 +17,15 @@ export default packageName => ({
       compact: IS_PRODUCTION,
     },
   ],
-  plugins: [ts(), resolve(), commonJS(), IS_PRODUCTION ? terser() : undefined],
+  plugins: [
+    ts({
+      transpiler: 'babel',
+      babelConfig: '../../babel.config.js',
+    }),
+    resolve({
+      browser: true,
+    }),
+    commonJS(),
+    IS_PRODUCTION ? terser() : undefined,
+  ],
 });

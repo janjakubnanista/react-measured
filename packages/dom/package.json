@@ -44,10 +44,13 @@
     "storybook:build": "build-storybook",
     "storybook:start": "start-storybook -p 6006",
     "storybook:publish": "storybook-to-ghpages",
-    "gh-pages": "npm run gh-pages:clean && npm run gh-pages:build && npm run gh-pages:publish"
+    "gh-pages": "npm run gh-pages:clean && npm run gh-pages:build && npm run gh-pages:publish",
+    "watch": "rollup -cw"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
+    "@babel/plugin-proposal-class-properties": "^7.7.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.7.4",
     "@storybook/addon-actions": "^5.2.1",
     "@storybook/addon-info": "^5.2.1",
     "@storybook/addon-links": "^5.2.1",
@@ -66,6 +69,9 @@
     "@typescript-eslint/parser": "^2.3.2",
     "@wessberg/rollup-plugin-ts": "^1.1.73",
     "babel-loader": "^8.0.6",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-typescript": "^7.0.0-alpha.19",
     "enzyme": "^3.10.0",
     "eslint": "^6.5.1",
     "eslint-config-airbnb": "^18.0.1",
@@ -88,7 +94,6 @@
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-terser": "^5.1.2",
-    "rollup-plugin-typescript2": "^0.24.3",
     "storybook": "^5.1.11",
     "styled-components": "^4.4.0",
     "ts-jest": "^24.1.0",

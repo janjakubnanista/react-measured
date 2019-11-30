@@ -1,6 +1,6 @@
 import { createUseBoundingBox } from 'react-measured';
-import { createHTMLChecker } from './createHTMLChecker';
+import { NativeChecker } from '../utils/NativeChecker';
 
-const checker = createHTMLChecker();
+const checker = new NativeChecker();
 
 export const useBoundingBox = createUseBoundingBox(checker);

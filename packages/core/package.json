@@ -29,7 +29,8 @@
     "build:lint": "eslint --fix dist --ext d.ts",
     "clean": "rm -rf dist",
     "test": "jest",
-    "test:watch": "yarn test --watchAll"
+    "test:watch": "yarn test --watchAll",
+    "watch": "rollup -cw"
   },
   "bugs": {
     "url": "https://github.com/janjakubnanista/react-measured/issues"
@@ -38,9 +39,16 @@
     "react": "^16.10.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/plugin-proposal-class-properties": "^7.7.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.7.4",
     "@types/react": "16.9.11",
     "@types/react-dom": "16.9.3",
     "@wessberg/rollup-plugin-ts": "^1.1.73",
+    "babel-loader": "^8.0.6",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-typescript": "^7.0.0-alpha.19",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
     "jest": "^24.9.0",
