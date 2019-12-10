@@ -16,8 +16,7 @@
   "module": "dist/index.es.js",
   "types": "dist/index.es.d.ts",
   "files": [
-    "dist/index.js",
-    "dist/index.d.ts"
+    "dist"
   ],
   "repository": {
     "type": "git",
