@@ -5,18 +5,27 @@ import { terser } from 'rollup-plugin-terser';
 
 const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 const globals = { react: 'React', 'react-dom': 'ReactDOM', 'react-native': 'reactNative' };
+const output = {
+  globals,
+  compact: IS_PRODUCTION,
+  exports: 'named',
+  sourcemap: true,
+};
 
 export default packageName => ({
   input: 'src/index.ts',
   external: ['react', 'react-dom', 'react-native', 'react-measured'],
   output: [
     {
-      file: 'dist/index.js',
+      ...output,
+      file: 'dist/index.cjs.js',
       format: 'cjs',
       name: packageName,
-      globals,
-      compact: IS_PRODUCTION,
-      exports: 'named',
+    },
+    {
+      ...output,
+      file: 'dist/index.es.js',
+      format: 'es',
       sourcemap: true,
     },
   ],

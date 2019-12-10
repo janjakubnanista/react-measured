@@ -2,11 +2,12 @@
   "name": "react-measured-dom",
   "version": "1.0.1",
   "description": "Width & height providers for React",
-  "main": "dist/index.js",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.es.d.ts",
   "files": [
     "dist"
   ],
-  "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/janjakubnanista/react-measured.git",

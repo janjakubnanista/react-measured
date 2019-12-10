@@ -12,7 +12,9 @@
   ],
   "author": "Jan Jakub Nanista <jan.jakub.nanista@gmail.com>",
   "homepage": "https://github.com/janjakubnanista/react-measured#readme",
-  "main": "dist/index.js",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.es.d.ts",
   "license": "ISC",
   "files": [
     "build"
