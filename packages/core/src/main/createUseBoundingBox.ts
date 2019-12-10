@@ -16,8 +16,6 @@ export const createUseBoundingBox = <T>(checker: Checker<T>): UseBoundingBox<T> 
     useEffect(() => {
       if (!ref.current) return;
 
-      console.warn('registering', ref.current, onChange, transform);
-
       return checker(
         ref.current,
         (newBoundingBox: BoundingBox): void => {
