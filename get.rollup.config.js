@@ -4,17 +4,20 @@ import ts from '@wessberg/rollup-plugin-ts';
 import { terser } from 'rollup-plugin-terser';
 
 const IS_PRODUCTION = process.env.NODE_ENV === 'production';
+const globals = { react: 'React', 'react-dom': 'ReactDOM', 'react-native': 'reactNative' };
 
 export default packageName => ({
   input: 'src/index.ts',
-  external: ['react', 'react-native'],
+  external: ['react', 'react-dom', 'react-native', 'react-measured'],
   output: [
     {
       file: 'dist/index.js',
       format: 'cjs',
       name: packageName,
-      globals: { react: 'React' },
+      globals,
       compact: IS_PRODUCTION,
+      exports: 'named',
+      sourcemap: true,
     },
   ],
   plugins: [
@@ -25,7 +28,12 @@ export default packageName => ({
     resolve({
       browser: true,
     }),
-    commonJS(),
-    IS_PRODUCTION ? terser() : undefined,
+    commonJS({
+      ignoreGlobal: true,
+      namedExports: {
+        'react-is': ['isElement', 'isValidElementType', 'ForwardRef'],
+      },
+    }),
+    IS_PRODUCTION ? terser({ compress: true, sourcemap: true }) : undefined,
   ],
 });
