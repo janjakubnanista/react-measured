@@ -57,7 +57,7 @@ export function createMeasured<I>(useBoundingBox: UseBoundingBox<I>): Measured<I
       const boundingBox = useBoundingBox(ref, onBoundingBoxChange, transform);
 
       // Aaaaaand render
-      return React.createElement(type, { ...rest, ref }, renderChildren(children, boundingBox));
+      return React.createElement(type, Object.assign({}, rest, { ref }), renderChildren(children, boundingBox));
     };
 
     return Measured;
