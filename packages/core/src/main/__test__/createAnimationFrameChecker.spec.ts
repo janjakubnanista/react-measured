@@ -21,7 +21,7 @@ const nextFrame = (): void => {
 const createElement = (): HTMLElement => document.createElement('div');
 
 describe('createAnimationFrameChecker', () => {
-  let check: jest.Mock<void, [Set<CheckerItem<HTMLElement>>, Map<HTMLElement, BoundingBox>, () => void]>;
+  let check: jest.Mock<void, [Set<CheckerItem<HTMLElement>>, Map<CheckerItem<HTMLElement>, BoundingBox>, () => void]>;
   let checker: Checker<HTMLElement>;
   let defaultOnChange: jest.Mock;
 
@@ -35,6 +35,7 @@ describe('createAnimationFrameChecker', () => {
   });
 
   afterEach(() => {
+    check.mockReset();
     checker.clear();
   });
 
@@ -138,15 +139,15 @@ describe('createAnimationFrameChecker', () => {
 
     check.mockImplementation((items, measurements, next: () => void) => next());
     check.mockImplementationOnce((items, measurements, next: () => void) => {
-      measurements.set(element1, defaultBoundingBox);
+      measurements.set({ element: element1, onChange: defaultOnChange }, defaultBoundingBox);
       next();
     });
     check.mockImplementationOnce((items, measurements, next: () => void) => {
-      measurements.set(element2, boundingBox2);
+      measurements.set({ element: element2, onChange: defaultOnChange }, boundingBox2);
       next();
     });
     check.mockImplementationOnce((items, measurements, next: () => void) => {
-      measurements.set(element3, boundingBox3);
+      measurements.set({ element: element3, onChange: defaultOnChange }, boundingBox3);
       next();
     });
 
@@ -157,7 +158,11 @@ describe('createAnimationFrameChecker', () => {
     expect(check).toHaveBeenCalledTimes(4);
     expect(check).toHaveBeenCalledWith(
       expect.any(Set),
-      new Map([[element1, defaultBoundingBox], [element2, boundingBox2], [element3, boundingBox3]]),
+      new Map([
+        [{ element: element1, onChange: defaultOnChange }, defaultBoundingBox],
+        [{ element: element2, onChange: defaultOnChange }, boundingBox2],
+        [{ element: element3, onChange: defaultOnChange }, boundingBox3],
+      ]),
       expect.any(Function),
     );
   });
@@ -201,7 +206,7 @@ describe('createAnimationFrameChecker', () => {
     const onChange1 = jest.fn();
     check.mockImplementation((items, measurements, next: () => void) => next());
     check.mockImplementationOnce((items, measurements, next: () => void) => {
-      measurements.set(element1, defaultBoundingBox);
+      measurements.set({ element: element1, onChange: jest.fn() }, defaultBoundingBox);
       next();
     });
 

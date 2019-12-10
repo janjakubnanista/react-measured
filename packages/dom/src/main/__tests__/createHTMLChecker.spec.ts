@@ -204,5 +204,35 @@ describe('createHTMLChecker', () => {
       expect(onChange2).toHaveBeenCalledTimes(1);
       expect(onChange2).toHaveBeenCalledWith(shiftBoundingBox(zeroBoundingBox));
     });
+
+    it('should call onChange on all elements even if they are the same', () => {
+      checker(element, onChange1);
+      checker(element, onChange2);
+
+      nextTwoFrames();
+      expect(onChange1).toHaveBeenCalledTimes(1);
+      expect(onChange1).toHaveBeenCalledWith(zeroBoundingBox);
+      expect(onChange2).toHaveBeenCalledTimes(1);
+      expect(onChange2).toHaveBeenCalledWith(zeroBoundingBox);
+    });
+
+    it('should not call onChange when the same elements are registered and dimensions do not change', () => {
+      checker(element, onChange1);
+      checker(element, onChange2);
+
+      nextTwoFrames();
+      expect(onChange1).toHaveBeenCalledTimes(1);
+      expect(onChange1).toHaveBeenCalledWith(zeroBoundingBox);
+      expect(onChange2).toHaveBeenCalledTimes(1);
+      expect(onChange2).toHaveBeenCalledWith(zeroBoundingBox);
+
+      onChange1.mockClear();
+      onChange2.mockClear();
+
+      nextTwoFrames();
+
+      expect(onChange1).not.toHaveBeenCalled();
+      expect(onChange2).not.toHaveBeenCalled();
+    });
   });
 });

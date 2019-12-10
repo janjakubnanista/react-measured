@@ -19,11 +19,11 @@ export const createHTMLChecker = (): Checker<HTMLElement> => {
       const boundingBox = value.transform ? value.transform(rawBoundingBox) : rawBoundingBox;
 
       // And compare to its previous bounding box
-      const previousBoundingBox = measurements.get(value.element);
+      const previousBoundingBox = measurements.get(value);
       if (areBoundingBoxesEqual(boundingBox, previousBoundingBox)) return;
 
       // And only if they are different update the element bounding box in the map
-      measurements.set(value.element, boundingBox);
+      measurements.set(value, boundingBox);
 
       // Finally add the corresponding onChange callback to the result array
       // to be executed in the next animation frame

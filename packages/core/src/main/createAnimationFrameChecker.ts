@@ -2,10 +2,10 @@ import { CheckerTransform, CheckerChangeHandler, BoundingBox, CheckerItem, Check
 import { InNextFrame, createInNextFrame } from './createInNextFrame';
 
 export const createAnimationFrameChecker = <T>(
-  check: (items: Set<CheckerItem<T>>, measurements: Map<T, BoundingBox>, next: () => void) => void,
+  check: (items: Set<CheckerItem<T>>, measurements: Map<CheckerItem<T>, BoundingBox>, next: () => void) => void,
 ): Checker<T> => {
   const items: Set<CheckerItem<T>> = new Set();
-  const measurements: Map<T, BoundingBox> = new Map();
+  const measurements: Map<CheckerItem<T>, BoundingBox> = new Map();
   const inNextFrame: InNextFrame = createInNextFrame();
 
   const addItem = (item: CheckerItem<T>): CheckerItem<T> => {
@@ -16,7 +16,7 @@ export const createAnimationFrameChecker = <T>(
 
   const removeItem = (item: CheckerItem<T>): void => {
     items.delete(item);
-    measurements.delete(item.element);
+    measurements.delete(item);
   };
 
   const loop = (): void => {
