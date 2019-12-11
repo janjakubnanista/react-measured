@@ -27,7 +27,8 @@
     "lint": "eslint \"src/**\"",
     "test": "jest --passWithNoTests",
     "test:watch": "yarn test --watchAll",
-    "watch": "rollup -cw"
+    "watch": "rollup -cw",
+    "prepublishOnly": "yarn test && yarn clean && NODE_ENV=production yarn build"
   },
   "repository": {
     "type": "git",

@@ -30,7 +30,8 @@
     "clean": "rm -rf dist",
     "test": "jest",
     "test:watch": "yarn test --watchAll",
-    "watch": "rollup -cw"
+    "watch": "rollup -cw",
+    "prepublishOnly": "yarn test && yarn clean && NODE_ENV=production yarn build"
   },
   "bugs": {
     "url": "https://github.com/janjakubnanista/react-measured/issues"

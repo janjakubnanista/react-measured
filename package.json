@@ -7,8 +7,7 @@
   "scripts": {
     "build": "lerna run build",
     "clean": "lerna run clean",
-    "test": "lerna run test",
-    "prepublishOnly": "yarn test && yarn clean && NODE_ENV=production yarn build"
+    "test": "lerna run test"
   },
   "repository": {
     "type": "git",
