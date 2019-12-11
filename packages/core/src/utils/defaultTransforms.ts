@@ -1,7 +1,8 @@
 import { BoundingBox, CheckerTransform } from '../types';
 
 export const discardPosition: CheckerTransform<BoundingBox> = boundingBox => ({
-  ...boundingBox,
+  width: boundingBox.width,
+  height: boundingBox.height,
   top: NaN,
   right: NaN,
   bottom: NaN,
@@ -9,7 +10,10 @@ export const discardPosition: CheckerTransform<BoundingBox> = boundingBox => ({
 });
 
 export const discardSize: CheckerTransform<BoundingBox> = boundingBox => ({
-  ...boundingBox,
+  top: boundingBox.top,
+  right: boundingBox.right,
+  bottom: boundingBox.bottom,
+  left: boundingBox.left,
   width: NaN,
   height: NaN,
 });

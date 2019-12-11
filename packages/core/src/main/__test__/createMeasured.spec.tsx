@@ -5,14 +5,17 @@ import { buildBoundingBox } from '../../test/builders';
 import { createMeasured } from '../createMeasured';
 import { BoundingBox } from '../../types';
 import { mount } from 'enzyme';
-import { discardSize, discardPosition } from '../../utils';
+import { UseBoundingBox } from '../createUseBoundingBox';
 
 describe('createMeasured', () => {
   const defaultBoundingBox: BoundingBox = buildBoundingBox();
 
   function testDOMHOC<T extends keyof React.ReactHTML>(type: T, domProps: React.ComponentProps<T>): void {
     describe(`createMeasure(useBoundingBox)('${type}')`, () => {
-      const useBoundingBox = jest.fn();
+      const useBoundingBox = jest.fn<
+        ReturnType<UseBoundingBox<HTMLElement>>,
+        Parameters<UseBoundingBox<HTMLElement>>
+      >();
       const measured = createMeasured<HTMLElement>(useBoundingBox);
       const MeasuredComponent = measured(type);
 
@@ -90,54 +93,84 @@ describe('createMeasured', () => {
       });
 
       describe('positionOnly prop', () => {
-        it('should not use the discardSize transform when undefined', () => {
-          mount(<MeasuredComponent {...domProps} />);
+        it('should not use the discardPosition transform when undefined', () => {
+          const boundingBox = buildBoundingBox({ width: 100, height: 20 });
+          useBoundingBox.mockImplementationOnce((element, onChange, transform) => {
+            expect(transform).toBeInstanceOf(Function);
+            expect(transform!(boundingBox)).toBe(boundingBox);
 
+            return undefined;
+          });
+
+          mount(<MeasuredComponent {...domProps} />);
           expect(useBoundingBox).toHaveBeenCalledTimes(1);
-          expect(useBoundingBox).toHaveBeenCalledWith(expect.any(Object), undefined, expect.any(Array));
-          expect(useBoundingBox.mock.calls[0][2]).not.toContain(discardSize);
         });
 
         it('should not use the discardSize transform when falsy', () => {
-          mount(<MeasuredComponent {...domProps} positionOnly={false} />);
+          const boundingBox = buildBoundingBox({ width: 100, height: 20 });
+          useBoundingBox.mockImplementationOnce((element, onChange, transform) => {
+            expect(transform).toBeInstanceOf(Function);
+            expect(transform!(boundingBox)).toBe(boundingBox);
 
+            return undefined;
+          });
+
+          mount(<MeasuredComponent {...domProps} positionOnly={false} />);
           expect(useBoundingBox).toHaveBeenCalledTimes(1);
-          expect(useBoundingBox).toHaveBeenCalledWith(expect.any(Object), undefined, expect.any(Array));
-          expect(useBoundingBox.mock.calls[0][2]).not.toContain(discardSize);
         });
 
         it('should use the discardSize transform when truthy', () => {
-          mount(<MeasuredComponent {...domProps} positionOnly />);
+          const boundingBox = buildBoundingBox({ width: 100, height: 20 });
+          useBoundingBox.mockImplementationOnce((element, onChange, transform) => {
+            expect(transform).toBeInstanceOf(Function);
+            expect(transform!(boundingBox)).toEqual(buildBoundingBox({ width: NaN, height: NaN }));
 
+            return undefined;
+          });
+
+          mount(<MeasuredComponent {...domProps} positionOnly={true} />);
           expect(useBoundingBox).toHaveBeenCalledTimes(1);
-          expect(useBoundingBox).toHaveBeenCalledWith(expect.any(Object), undefined, expect.any(Array));
-          expect(useBoundingBox.mock.calls[0][2]).toContain(discardSize);
         });
       });
 
       describe('sizeOnly prop', () => {
         it('should not use the discardPosition transform when undefined', () => {
-          mount(<MeasuredComponent {...domProps} />);
+          const boundingBox = buildBoundingBox({ top: 100, left: 20 });
+          useBoundingBox.mockImplementationOnce((element, onChange, transform) => {
+            expect(transform).toBeInstanceOf(Function);
+            expect(transform!(boundingBox)).toBe(boundingBox);
 
+            return undefined;
+          });
+
+          mount(<MeasuredComponent {...domProps} />);
           expect(useBoundingBox).toHaveBeenCalledTimes(1);
-          expect(useBoundingBox).toHaveBeenCalledWith(expect.any(Object), undefined, expect.any(Array));
-          expect(useBoundingBox.mock.calls[0][2]).not.toContain(discardPosition);
         });
 
         it('should not use the discardPosition transform when falsy', () => {
-          mount(<MeasuredComponent {...domProps} sizeOnly={false} />);
+          const boundingBox = buildBoundingBox({ top: 100, left: 20 });
+          useBoundingBox.mockImplementationOnce((element, onChange, transform) => {
+            expect(transform).toBeInstanceOf(Function);
+            expect(transform!(boundingBox)).toBe(boundingBox);
 
+            return undefined;
+          });
+
+          mount(<MeasuredComponent {...domProps} sizeOnly={false} />);
           expect(useBoundingBox).toHaveBeenCalledTimes(1);
-          expect(useBoundingBox).toHaveBeenCalledWith(expect.any(Object), undefined, expect.any(Array));
-          expect(useBoundingBox.mock.calls[0][2]).not.toContain(discardPosition);
         });
 
         it('should use the discardPosition transform when truthy', () => {
-          mount(<MeasuredComponent {...domProps} sizeOnly />);
+          const boundingBox = buildBoundingBox({ top: 100, left: 20 });
+          useBoundingBox.mockImplementationOnce((element, onChange, transform) => {
+            expect(transform).toBeInstanceOf(Function);
+            expect(transform!(boundingBox)).toEqual(buildBoundingBox({ top: NaN, left: NaN, right: NaN, bottom: NaN }));
 
+            return undefined;
+          });
+
+          mount(<MeasuredComponent {...domProps} sizeOnly={true} />);
           expect(useBoundingBox).toHaveBeenCalledTimes(1);
-          expect(useBoundingBox).toHaveBeenCalledWith(expect.any(Object), undefined, expect.any(Array));
-          expect(useBoundingBox.mock.calls[0][2]).toContain(discardPosition);
         });
       });
 
@@ -147,7 +180,7 @@ describe('createMeasured', () => {
           mount(<MeasuredComponent {...domProps} onBoundingBoxChange={onBoundingBoxChange} />);
 
           expect(useBoundingBox).toHaveBeenCalledTimes(1);
-          expect(useBoundingBox).toHaveBeenCalledWith(expect.any(Object), onBoundingBoxChange, expect.any(Array));
+          expect(useBoundingBox).toHaveBeenCalledWith(expect.any(Object), onBoundingBoxChange, expect.any(Function));
         });
       });
     });

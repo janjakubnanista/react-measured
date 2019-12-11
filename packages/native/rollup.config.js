@@ -1,20 +1,3 @@
-import typescript from 'rollup-plugin-typescript2';
-import pkg from './package.json';
+import getRollupConfig from '../../get.rollup.config';
 
-export default [
-  {
-    input: 'src/index.ts',
-    external: ['react'],
-    output: [
-      { file: pkg.main, format: 'cjs' },
-      { file: pkg.module, format: 'es' },
-      {
-        file: pkg.browser,
-        format: 'umd',
-        name: 'react-measured/native',
-        globals: { react: 'React' },
-      },
-    ],
-    plugins: [typescript()],
-  },
-];
+export default [getRollupConfig('react-measured-native')];

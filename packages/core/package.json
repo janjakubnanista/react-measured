@@ -12,12 +12,12 @@
   "author": "Jan Jakub Nanista <jan.jakub.nanista@gmail.com>",
   "homepage": "https://github.com/janjakubnanista/react-measured#readme",
   "license": "ISC",
-  "main": "dist/index.js",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.es.d.ts",
   "files": [
-    "dist/index.js",
-    "dist/index.d.ts"
+    "dist"
   ],
-  "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/janjakubnanista/react-measured.git",
@@ -29,7 +29,8 @@
     "build:lint": "eslint --fix dist --ext d.ts",
     "clean": "rm -rf dist",
     "test": "jest",
-    "test:watch": "yarn test --watchAll"
+    "test:watch": "yarn test --watchAll",
+    "watch": "rollup -cw"
   },
   "bugs": {
     "url": "https://github.com/janjakubnanista/react-measured/issues"
@@ -38,9 +39,15 @@
     "react": "^16.10.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/plugin-proposal-object-rest-spread": "^7.7.4",
     "@types/react": "16.9.11",
     "@types/react-dom": "16.9.3",
     "@wessberg/rollup-plugin-ts": "^1.1.73",
+    "babel-loader": "^8.0.6",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-typescript": "^7.0.0-alpha.19",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
     "jest": "^24.9.0",
