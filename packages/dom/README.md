@@ -96,7 +96,7 @@ const MyComponent: React.FC = () => (
 
 `Measured` exposes the following HTML elements:
 
-`a`, `abbr`, `address`, `area`, `article`, `aside`, `audio`, `b`, `base`, `bdi`, `bdo`, `big`, `blockquote`, `body`, `br`, `button`, `canvas`, `caption`, `cite`, `code`, `col`, `colgroup`, `data`, `datalist`, `dd`, `del`, `details`, `dfn`, `dialog`, `div`, `dl`, `dt`, `em`, `embed`, `fieldset`, `figcaption`, `figure`, `footer`, `form`, `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `head`, `header`, `hgroup`, `hr`, `html`, `i`, `iframe`, `img`, `input`, `ins`, `kbd`, `keygen`, `label`, `legend`, `li`, `link`, `main`, `map`, `mark`, `menu`, `menuitem`, `meta`, `meter`, `nav`, `noscript`, `object`, `ol`, `optgroup`, `option`, `output`, `p`, `param`, `picture`, `pre`, `progress`, `q`, `rp`, `rt`, `ruby`, `s`, `samp`, `script`, `section`, `select`, `small`, `source`, `span`, `strong`, `style`, `sub`, `summary`, `sup`, `table`, `template`, `tbody`, `td`, `textarea`, `tfoot`, `th`, `thead`, `time`, `title`, `tr`, `track`, `u`, `ul`, `var`, `video`, `wbr`, `webview`
+`a`, `abbr`, `address`, `article`, `aside`, `b`, `bdi`, `bdo`, `big`, `blockquote`, `body`, `button`, `canvas`, `caption`, `cite`, `code`, `dd`, `del`, `details`, `dfn`, `dialog`, `div`, `dl`, `dt`, `em`, `embed`, `fieldset`, `figcaption`, `figure`, `footer`, `form`, `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `head`, `header`, `hgroup`, `hr`, `i`, `iframe`, `img`, `input`, `ins`, `kbd`, `label`, `legend`, `li`, `main`, `map`, `mark`, `meter`, `nav`, `object`, `ol`, `output`, `p`, `picture`, `pre`, `progress`, `q`, `rp`, `rt`, `ruby`, `s`, `samp`, `section`, `select`, `small`, `span`, `strong`, `sub`, `summary`, `sup`, `table`, `tbody`, `td`, `textarea`, `tfoot`, `th`, `thead`, `time`, `tr`, `u`, `ul`, `var`, `video`,
 
 <a id="api/Measured/HOC"></a>
 #### Using Measured as HOC
@@ -271,12 +271,12 @@ Sometimes you might want to tweak the measured size/position values depending on
 
 ```TypeScript
 // For ease of use falsy values are also allowed
-type CheckerTransform = undefined | null | false | (box: BoundingBox) => BoundingBox;
+type CheckerTransform = (box: BoundingBox) => BoundingBox;
 
 useBoundingBox: (
   ref: React.RefObject<HTMLElement>,
   onChange?: (box: BoundingBox | undefined) => void,
-  transforms: CheckerTransform[]
+  transform?: CheckerTransform
 ) => BoundingBox
 ```
 
