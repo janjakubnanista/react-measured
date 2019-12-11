@@ -1,6 +1,6 @@
 {
   "name": "react-measured-native",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "React width & height providers for React Native",
   "keywords": [
     "React",
@@ -38,7 +38,7 @@
     "url": "https://github.com/janjakubnanista/react-measured/issues"
   },
   "dependencies": {
-    "react-measured": "^1.0.1"
+    "react-measured": "^1.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
